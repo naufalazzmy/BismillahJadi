@@ -2,14 +2,14 @@
 
 public class PlayerController : MonoBehaviour
 {
-	public float movementSpeed = 150.0f;
-	public float rotateSpeed = 3.0f;
+	public float rotateSpeed = 150.0f;
+	public float movementSpeed = 3.0f;
 	void Update()
 	{
 		//Forward Backward Move
-		var x = Input.GetAxis("Horizontal") * Time.deltaTime * movementSpeed;
+		var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed;
 		//Rotate 
-		var z = Input.GetAxis("Vertical") * Time.deltaTime * rotateSpeed;
+		var z = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
 
 		transform.Rotate(0, x, 0);
 		transform.Translate(0, 0, z);
