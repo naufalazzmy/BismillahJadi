@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class Notification : MonoBehaviour
 {
-    GameObject notif;
-    bool notifON = false;
-
-    // Use this for initialization
+    static public bool notifON = false;
+    GameObject notif, dialogBox;
     void Start()
     {
+        dialogBox = GameObject.FindGameObjectWithTag("dialogBox");
         notif = GameObject.Find("Notif");
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("GetInpo")&& notifON==true)
+        if (Input.GetButtonDown("GetInpo") && notifON == true)
         {
+            dialogBox.GetComponent<DialogBoxController>().openDialogBox();
+            dialogBox.GetComponent<DialogBoxController>().showDialogBox(GetInfoOfArea.getInfo(transform.name));
             Debug.LogWarning(GetInfoOfArea.getInfo(transform.name));
         }
     }
@@ -28,14 +27,16 @@ public class Notification : MonoBehaviour
         {
             notif.GetComponent<NotifController>().OnNotifBaloon();
             notifON = true;
+            
         }
     }
     void OnTriggerExit(Collider col)
     {
         {
-            Debug.LogError("Berhasil, " + transform.name);
             notif.GetComponent<NotifController>().OffNotifBaloon();
             notifON = false;
+            dialogBox.GetComponent<DialogBoxController>().closeDialogBox();
+            Debug.LogWarning(transform.name);
         }
     }
 }

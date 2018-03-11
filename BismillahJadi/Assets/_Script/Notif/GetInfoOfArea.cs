@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetInfoOfArea : MonoBehaviour {
-
-	// Use this for initialization
-	public static string getInfo(string name)
+public class GetInfoOfArea : MonoBehaviour
+{
+    public static string getInfo(string name)
     {
-        if (name == GameObject.Find("LVL1").name)
+        if (name == "LVL1")
         {
             return "ini Level 1";
         }
-        else if (name == GameObject.Find("LVL2").name)
+        else if (name == "LVL2")
         {
             return "INI level 2";
         }
-        else if (name == GameObject.Find("LVL3").name)
+        else if (name == "LVL3")
         {
             return "ini level 3";
         }
         else
+        {
             return null;
-    }
+        }
 
+    }
 }
